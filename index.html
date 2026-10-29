@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresh Fruit Store</title>
+<title>FruitMart</title>
 
 <style>
 *{
@@ -14,168 +14,177 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#f7fff6;
+background:#f4fff4;
 }
 
 header{
 background:#2e7d32;
+padding:15px 30px;
 color:white;
-padding:15px 50px;
 display:flex;
 justify-content:space-between;
 align-items:center;
 position:sticky;
 top:0;
-z-index:1000;
 }
 
 .logo{
-font-size:28px;
+font-size:30px;
 font-weight:bold;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-18px;
+margin:0 10px;
 }
 
 .hero{
 height:90vh;
-background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
-url("https://images.unsplash.com/photo-1619566636858-adf3ef46400b");
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1200');
 background-size:cover;
 background-position:center;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
 color:white;
-padding:20px;
+text-align:center;
 }
 
 .hero h1{
 font-size:55px;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 .hero p{
 font-size:22px;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .btn{
+padding:12px 25px;
 background:#ff9800;
-padding:12px 28px;
-color:white;
 border:none;
-border-radius:8px;
+color:white;
+border-radius:5px;
 cursor:pointer;
-font-size:18px;
 }
 
-.products{
-padding:70px 10%;
-}
-
-.products h2{
+.section-title{
 text-align:center;
-margin-bottom:40px;
-font-size:40px;
+padding:30px;
+font-size:35px;
 color:#2e7d32;
 }
 
-.grid{
+.products{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+gap:20px;
+padding:20px;
 }
 
 .card{
 background:white;
 border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
 overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
 }
 
 .card img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:cover;
 }
 
 .card-content{
-padding:20px;
+padding:15px;
 text-align:center;
 }
 
 .price{
+color:red;
+font-size:22px;
 font-weight:bold;
-font-size:20px;
 margin:10px 0;
-color:#ff5722;
 }
 
 .about{
-padding:70px 10%;
-background:#e8f5e9;
+padding:40px;
 text-align:center;
-}
-
-.about h2{
-color:#2e7d32;
-margin-bottom:20px;
+background:#e8f5e9;
 }
 
 .contact{
-padding:70px 10%;
+padding:40px;
 }
 
-.contact h2{
-text-align:center;
-margin-bottom:20px;
-color:#2e7d32;
-}
-
-form{
+.contact form{
 max-width:600px;
 margin:auto;
 display:flex;
 flex-direction:column;
-gap:15px;
+gap:10px;
 }
 
 input,textarea{
 padding:12px;
 border:1px solid #ccc;
-border-radius:8px;
+border-radius:5px;
 }
 
 footer{
 background:#1b5e20;
+padding:20px;
 color:white;
 text-align:center;
-padding:20px;
+margin-top:30px;
 }
 
-.cart{
+.whatsapp{
 position:fixed;
 bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.cart-btn{
+position:fixed;
+bottom:85px;
 right:20px;
 background:#ff9800;
 color:white;
 padding:15px;
 border-radius:50%;
-font-size:22px;
 cursor:pointer;
 }
+
+.search-box{
+text-align:center;
+padding:20px;
+}
+
+.search-box input{
+width:80%;
+max-width:500px;
+padding:10px;
+}
+
+.review{
+background:white;
+padding:15px;
+margin:10px;
+border-radius:10px;
+}
 </style>
+
 </head>
 <body>
 
@@ -191,101 +200,137 @@ cursor:pointer;
 </header>
 
 <section class="hero">
-<h1>Fresh Fruits Delivered Daily</h1>
-<p>Healthy • Organic • Farm Fresh</p>
-<button class="btn">Order Now</button>
+<h1>Fresh Fruits Delivered</h1>
+<p>Healthy • Fresh • Organic</p>
+<button class="btn">Shop Now</button>
 </section>
+
+<section class="search-box">
+<input type="text" id="search" placeholder="Search Fruits..." onkeyup="searchProduct()">
+</section>
+
+<h2 class="section-title">Popular Fruits</h2>
 
 <section class="products" id="products">
 
-<h2>Popular Fruits</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce">
+<div class="card product">
+<img src="https://via.placeholder.com/300x200">
 <div class="card-content">
 <h3>Apple</h3>
-<p class="price">₹120 / Kg</p>
-<button class="btn" onclick="addCart('Apple')">Add Cart</button>
+<p class="price">₹120/kg</p>
+<button class="btn" onclick="addCart('Apple')">Add To Cart</button>
 </div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1553279768-865429fa0078">
+<div class="card product">
+<img src="https://via.placeholder.com/300x200">
 <div class="card-content">
 <h3>Mango</h3>
-<p class="price">₹150 / Kg</p>
-<button class="btn" onclick="addCart('Mango')">Add Cart</button>
+<p class="price">₹150/kg</p>
+<button class="btn" onclick="addCart('Mango')">Add To Cart</button>
 </div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1574226516831-e1dff420e37f">
+<div class="card product">
+<img src="https://via.placeholder.com/300x200">
 <div class="card-content">
 <h3>Banana</h3>
-<p class="price">₹60 / Dozen</p>
-<button class="btn" onclick="addCart('Banana')">Add Cart</button>
+<p class="price">₹60/dozen</p>
+<button class="btn" onclick="addCart('Banana')">Add To Cart</button>
 </div>
 </div>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1580052614034-c55d20bfee3b">
+<div class="card product">
+<img src="https://via.placeholder.com/300x200">
 <div class="card-content">
 <h3>Orange</h3>
-<p class="price">₹100 / Kg</p>
-<button class="btn" onclick="addCart('Orange')">Add Cart</button>
+<p class="price">₹100/kg</p>
+<button class="btn" onclick="addCart('Orange')">Add To Cart</button>
 </div>
 </div>
 
-</div>
 </section>
 
 <section class="about" id="about">
-<h2>About Our Store</h2>
+<h2>About Us</h2>
 <p>
-We supply fresh fruits directly from farms to customers.
-Fast delivery, best quality and affordable prices.
+We provide farm-fresh fruits with fast delivery and high quality.
 </p>
 </section>
 
-<section class="contact" id="contact">
+<section style="padding:40px;">
+<h2 class="section-title">Customer Reviews</h2>
 
-<h2>Contact Us</h2>
+<div class="review">
+⭐⭐⭐⭐⭐ Excellent quality fruits.
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐ Fast delivery service.
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐ Best prices.
+</div>
+</section>
+
+<section class="contact" id="contact">
+<h2 class="section-title">Contact Us</h2>
 
 <form>
-
 <input type="text" placeholder="Your Name">
-
-<input type="email" placeholder="Your Email">
-
+<input type="email" placeholder="Email">
+<input type="tel" placeholder="Phone">
 <textarea rows="5" placeholder="Message"></textarea>
-
-<button class="btn">Send Message</button>
-
+<button class="btn">Send</button>
 </form>
 
 </section>
 
 <footer>
-© 2026 FruitMart | All Rights Reserved
+© 2026 FruitMart. All Rights Reserved.
 </footer>
 
-<div class="cart" onclick="viewCart()">
+<div class="cart-btn" onclick="showCart()">
 🛒
 </div>
+
+<a class="whatsapp"
+href="https://wa.me/919999999999?text=Hello%20I%20want%20to%20buy%20fruits">
+WhatsApp
+</a>
 
 <script>
 
 let cart=[];
 
-function addCart(product){
-cart.push(product);
-alert(product+" Added To Cart");
+function addCart(item){
+cart.push(item);
+localStorage.setItem('cart',JSON.stringify(cart));
+alert(item + ' Added To Cart');
 }
 
-function viewCart(){
-alert("Items in Cart:\\n\\n"+cart.join("\\n"));
+function showCart(){
+let data=JSON.parse(localStorage.getItem('cart')) || [];
+alert('Cart Items:\\n\\n'+data.join('\\n'));
+}
+
+function searchProduct(){
+let input=document.getElementById("search").value.toLowerCase();
+let products=document.getElementsByClassName("product");
+
+for(let i=0;i<products.length;i++){
+
+let title=products[i].innerText.toLowerCase();
+
+if(title.includes(input)){
+products[i].style.display="";
+}
+else{
+products[i].style.display="none";
+}
+
+}
 }
 
 </script>
